@@ -19,21 +19,23 @@ search.addEventListener('click', function() {
         .then(data => {
             for (let i = 0; i < 10; i++) {
                 const songs = data.data[i];
-                //console.log(songs)
+                console.log(songs)
                 const titleName = songs.title;
                 const singer = songs.artist.name;
-
+                const img = songs.album.cover_small;
                 output +=
                     `<div class="single-result row align-items-center my-3 p-3">
                     <div class="col-md-9">
                       <h3 class="lyrics-name">${titleName}  <p class="author lead">Album by <span>${singer}</span></p></h3>
+                      <img src="${img}" >
                       
                     </div>
                 <div class="col-md-3 text-md-right text-center">
                     <button class="btn btn-success"  onclick="getLyrics('${singer}','${titleName}')" >Get Lyrics</button>
                 </div>
                 
-                </div>`
+                </div>
+               `
                 songsList.innerHTML = output;
 
             }
@@ -59,7 +61,6 @@ function getLyrics(artist, title) {
               <h4 class="text-success mb-4">  ${artist}</h4>
           <pre  class="lyric text-white"> '${data.lyrics}' </pre> `;
             displayLyrics.innerHTML = htmlTemplate;
-
 
 
 
