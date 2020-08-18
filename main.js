@@ -23,8 +23,6 @@ search.addEventListener('click', function() {
                 const titleName = songs.title;
                 const singer = songs.artist.name;
 
-                //console.log(albumName)
-
                 output +=
                     `<div class="single-result row align-items-center my-3 p-3">
                     <div class="col-md-9">
@@ -49,14 +47,14 @@ search.addEventListener('click', function() {
 
 function getLyrics(artist, title) {
     // console.log(artist, title)
-    // let result = '';
+
     fetch(`https://api.lyrics.ovh/v1/${artist}/${title}`)
         .then(res => res.json())
         .then(function showLyrics(data) {
             console.log(data)
-                //const currantSong = data.htmlTemplate;
+
             let htmlTemplate = '';
-            let displayLyrics = document.getElementById('lyrics-show');
+            const displayLyrics = document.getElementById('lyrics-show');
             htmlTemplate += ` <h2 class="text-success mb-4">  ${title} </h2>
               <h4 class="text-success mb-4">  ${artist}</h4>
           <pre  class="lyric text-white"> '${data.lyrics}' </pre> `;
